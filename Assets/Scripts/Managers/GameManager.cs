@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
     #region Serializable Fields
@@ -55,6 +54,7 @@ public class GameManager : MonoBehaviour
         fightStarted = false;
         bossStateMachine = boss.GetComponent<BossStateMachine>();
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
+        bossStateMachine.BossDeath += CheckWinStatus;
         SetTimeScale(1f);
         LoadData();
     }
@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
             enemy.SetActive(false);
         }
     }
+
     #endregion
 
     #region Player Access
@@ -107,9 +108,14 @@ public class GameManager : MonoBehaviour
     {
         if (bossStateMachine != null && bossStateMachine.gameObject.activeInHierarchy)
         {
-            bossStateMachine.Stun();
+            bossStateMachine.Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
         }
-        
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<StateMachine>().Stun(playerStateMachine.ParryCooldown, playerStateMachine.ParrySlowDownAmount);
+        }
     }
     public void UnlockPlayerAbility(int ability)
     {
