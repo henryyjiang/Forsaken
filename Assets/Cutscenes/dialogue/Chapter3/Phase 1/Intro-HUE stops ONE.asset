@@ -14,20 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 0}
   dialogue:
-  - name: Bee
-    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
-    text: Hi I'm Bee hahaha
-  - name: Bone Fish
-    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
-    text: Hi I'm Bone Fish hahaha
-  - name: Bee
-    portrait: {fileID: -6448413485827177581, guid: 5177b61344d45e047a91a4baff036a8f, type: 3}
-    text: Buzzzzzzzz
-  - name: Bone Fish
-    portrait: {fileID: -805392004255857717, guid: d21dfa04f5faa1d49b2c3815d65dfc31, type: 3}
-    text: Blubbbb
-  responses:
-  - responseText: booooo
-    dialogueObject: {fileID: 11400000, guid: cb61e93894019a248a19fb6d406c63c9, type: 2}
-  - responseText: Yessss
-    dialogueObject: {fileID: 0}
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Stop right there. I'm to take that infected human to quarantine. Why do
+      you continue to run away?
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: 'I won''t believe a single lie that comes out of your mouth! You don''t
+      heal humans, you exterminate them. '
+  - name: ONE
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: Eva... she won't last long without a cure. Just leave us be and I'm sure-
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: A cure? Even if you search the ends of the earth you won't find a cure.
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: You know her disease is highly infectious. How many more humans will you
+      let her infect and kill before you accept reality?
+  - name: HUE
+    portrait: {fileID: -758239331478521217, guid: ac16eba6361b6474eac13df7c5fa5dd1, type: 3}
+    text: Hand the human over, or else...
+  responses: []
