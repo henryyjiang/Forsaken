@@ -1760,11 +1760,11 @@ MonoBehaviour:
   aggroDistance: 10
   stunTime: 2
   stunInterval: 5
-  damage: 7
+  damage: 5
   damageCooldown: 10
   jumpForceX: 5
   jumpForceY: 5
-  maxHealth: 50
+  maxHealth: 15
 --- !u!1 &6063971599116066333
 GameObject:
   m_ObjectHideFlags: 0

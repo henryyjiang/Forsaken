@@ -12,8 +12,10 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float slashForce = 30f;
     [SerializeField] private float recoilForce = 30f;
+    [SerializeField] private bool shootUnlocked = false;
 
     [Header("Dash")]
+    [SerializeField] private bool canDash = false;
     [SerializeField] private float dashSpeed = 15f;
     [SerializeField] private float dashDuration = 0.18f; // Duration based dash
     [SerializeField] private float dashDistance = 5f;
@@ -34,8 +36,8 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     [SerializeField] private float inputDeadzone = 0.02f;
 
     [Header("Parry")]
-    [SerializeField] private float parryTiming = 2.5f;
     [SerializeField] private float parryCooldown = 2.5f;
+    [SerializeField] private float parryDuration = 2.5f;
     [SerializeField] private float parrySlowDownAmount = 2f;
 
     [Header("Stamina/Energy")]
@@ -76,8 +78,6 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
 
     private bool isMovementPressed;
     private bool canMove = true;
-    private bool shootUnlocked = false;
-    private bool canDash = false;
 
     private bool isRunPressed;
     private bool isHitPressed;
@@ -556,18 +556,20 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
         if (targetParryCooldownId == currentParryCooldownId) {
             CanParry = false; // nothing was changed during the wait so was in the same parry
         }
+        shockwave.gameObject.SetActive(false);
     }
     
     private IEnumerator StartParryInternal() {
         if (IsParrying) yield break;
         IsParrying = true;
-        yield return new WaitForSeconds(parryTiming);
+        yield return new WaitForSeconds(parryDuration);
         IsParrying = false;
     }
 
     public void StartParry()
     {
         parryParticles.Play();
+        shockwave.gameObject.SetActive(true);
         shockwave.PlayShockwave();
         StartCoroutine(StartParryInternal());
         IsHurt = false;
@@ -704,18 +706,24 @@ public class PlayerStateMachine : StateMachine, IDamageable, ISetDifficulty
     public void HandleDifficulty(Difficulty difficulty) {
         switch (difficulty) {
             case Difficulty.Easy:
+                parryDuration = 5f;
+                parryCooldown = 0.5f;
                 maxHealth = 200;
                 SetHealth(maxHealth);
                 Cooldown = 6f;
                 break;
 
             case Difficulty.Normal:
+                parryDuration = 2.5f;
+                parryCooldown = 2.5f;
                 maxHealth = 100;
                 SetHealth(maxHealth);
                 Cooldown = 3f;
                 break;
 
             case Difficulty.Hard:
+                parryDuration = 2.0f;
+                parryCooldown = 2.5f;
                 maxHealth = 50;
                 SetHealth(maxHealth);
                 Cooldown = 1.5f;
