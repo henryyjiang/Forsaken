@@ -19,6 +19,7 @@ public class MobRushManager : MonoBehaviour
     [SerializeField] private Transform crowSpawnPointOne;
     [SerializeField] private Transform crowSpawnPointTwo;
     [SerializeField] private GameObject blaster;
+    [SerializeField] private CutsceneManager cutsceneManager;
 
     private GameManager gameManager;
     private BossStateMachine boss;
@@ -60,9 +61,8 @@ public class MobRushManager : MonoBehaviour
 
     public void TriggerHUE()
     {
-        boss.gameObject.SetActive(true);
         AddedEnemy?.Invoke(boss);
-        gameManager.FightStarted = true;
+        cutsceneManager.PlayCutScene(3);
     }
     public void FinishFight()
     {

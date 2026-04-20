@@ -35,10 +35,9 @@ public class CutsceneManager : MonoBehaviour
         if (bossStateMachine.gameObject.activeInHierarchy == true)
         {
             bossStateMachine.IsStunned = false;
-            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));  
+            bossStateMachine.JumpToState(new BossStartState(bossStateMachine));
             manager.FightStarted = false;
         }
-        
     }
 
     public void OnCutsceneEnd()
