@@ -20,4 +20,7 @@ MonoBehaviour:
   - name: ONE
     portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
     text: ...
+  - name: 
+    portrait: {fileID: 1841309852453516274, guid: 867cea4d8e7ded24f8f219b7a85cdd28, type: 3}
+    text: '*The professor did not inform me of this...*'
   responses: []
